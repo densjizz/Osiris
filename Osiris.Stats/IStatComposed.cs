@@ -9,6 +9,6 @@ namespace Osiris.Stats
     public interface IStatComposed
     {
         Stat GetStatNamed(string name);
-        DerivativeStat GetAttributeNamed(string name);
+        DerivativeStat GetDerivativeStatNamed(string name);
     }
 }

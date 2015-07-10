@@ -14,13 +14,13 @@ namespace Osiris.TurnManager.Test
         public List<DerivativeStat> Attributes;
 
 
-        public MokupMember() {
+        public MokupMember(float agilityValue) {
             Statistics = new List<Stat>();
             Attributes = new List<DerivativeStat>();
 
             var str = new Stat("Strenght", 10);
             Statistics.Add(str);
-            var agi = new Stat("Agility", 10);
+            var agi = new Stat("Agility", agilityValue);
             Statistics.Add(agi);
             var intel = new Stat("Intelligence", 10);
             Statistics.Add(intel);
@@ -44,7 +44,7 @@ namespace Osiris.TurnManager.Test
         }
 
 
-        public DerivativeStat GetAttributeNamed(string name)
+        public DerivativeStat GetDerivativeStatNamed(string name)
         {
             foreach (DerivativeStat a in Attributes)
             {

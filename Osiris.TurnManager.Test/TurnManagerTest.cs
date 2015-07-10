@@ -18,31 +18,30 @@ namespace Osiris.TurnManager.Test
             Assert.IsNotNull(mgr);
         }
 
-
         [Test]
-        public void SetupTwoTeamsWithMembers() {
+        public void SetupTwoTeamsWithMembersOrderBySpeed()
+        {
 
-            var teamA = new Team();
-            var memberA1 = new Membership(new MokupMember());
-            var memberA2 = new Membership(new MokupMember());
-            teamA.Members.Add(memberA1);
-            teamA.Members.Add(memberA2);
+            var member1 = new MokupMember(1);
+            var member2 = new MokupMember(3);
+            var member3 = new MokupMember(2);
+            var member4 = new MokupMember(4);
 
-
-            var teamB = new Team();
-            var memberB1 = new Membership(new MokupMember());
-            var memberB2 = new Membership(new MokupMember());
-            teamB.Members.Add(memberB1);
-            teamB.Members.Add(memberB2);
+            
 
 
             TurnManager mgr = new TurnManager();
-            mgr.Teams.Add(teamA);
-            mgr.Teams.Add(teamB);
-
+            mgr.Actors.Add(member3);
+            mgr.Actors.Add(member4);
+            mgr.Actors.Add(member1);
+            mgr.Actors.Add(member2);
             mgr.Start();
 
 
+            Assert.AreEqual(mgr.Actors[0].GetStatNamed("Agility").TotalValue, 4);
+            Assert.AreEqual(mgr.Actors[1].GetStatNamed("Agility").TotalValue, 3);
+            Assert.AreEqual(mgr.Actors[2].GetStatNamed("Agility").TotalValue, 2);
+            Assert.AreEqual(mgr.Actors[3].GetStatNamed("Agility").TotalValue, 1);
         }
     }
 }

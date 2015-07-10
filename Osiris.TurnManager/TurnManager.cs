@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Osiris.Stats;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,28 +9,23 @@ namespace Osiris.TurnManager
 {
     public class TurnManager
     {
-        public List<Team> Teams;
+        public List<IStatComposed> Actors;
 
 
         public TurnManager() {
-            Teams = new List<Team>();
+            Actors = new List<IStatComposed>();
         }
 
         public void Start()
         {
-            OrderTeams();
+            OrderBySpeed();
         }
 
-        private void OrderTeams()
+        private void OrderBySpeed()
         {
-            foreach (Team t in Teams) {
-                OrderTeamMembers(t);
-            }
+            Actors = Actors.OrderByDescending(x => x.GetStatNamed("Agility").TotalValue).ToList();
         }
 
-        private void OrderTeamMembers(Team t)
-        {
-            
-        }
+       
     }
 }
