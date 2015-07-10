@@ -9,16 +9,20 @@ namespace Osiris.TurnManager
 {
     public class TurnManager
     {
-        public List<IStatComposed> Actors;
-
+        public List<ISceneActor> Actors;
+        public SceneState state;
+        public List<int> ActedThisTurn;
+        public int currentActorIndex = 0;
+        public ISceneActor CurrentActor;
 
         public TurnManager() {
-            Actors = new List<IStatComposed>();
+            Actors = new List<ISceneActor>();
+            ActedThisTurn = new List<int>();
         }
 
         public void Start()
         {
-            OrderBySpeed();
+            Initialize();
         }
 
         private void OrderBySpeed()
@@ -26,6 +30,50 @@ namespace Osiris.TurnManager
             Actors = Actors.OrderByDescending(x => x.GetStatNamed("Agility").TotalValue).ToList();
         }
 
-       
+        public void Initialize(){
+            OrderBySpeed();
+            currentActorIndex = 0;
+            state = SceneState.Initializing;
+        }
+
+        public void Update() {
+            if (currentActorIndex >= Actors.Count) {
+                FullTurnFinished();
+            }
+            CurrentActor = Actors[currentActorIndex];
+
+            if (!ActedThisTurn.Contains(CurrentActor.GetId()))
+            {
+                CurrentActor.PromptActions();
+                ActedThisTurn.Add(CurrentActor.GetId());
+                CurrentActor.Finished += currentActor_Finished;
+            }
+        }
+
+        private void FullTurnFinished()
+        {
+            currentActorIndex = 0;
+            OrderBySpeed();
+        }
+
+        void currentActor_Finished(object sender, EventArgs e)
+        {
+            ActorFinished();
+        }
+
+        public void ActorFinished()
+        {
+            currentActorIndex++;
+            
+        }
+    }
+
+
+    public enum SceneState { 
+        Initializing,
+        BuffPhase,
+        HighSequenceTurn,
+        NormalTurns,
+        End,
     }
 }

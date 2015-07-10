@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="Armor.cs" />
     <Compile Include="DerivativeStat.cs" />
-    <Compile Include="IStatComposed.cs" />
+    <Compile Include="ISceneActor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferenceStatModifier.cs" />
     <Compile Include="SpeedStat.cs" />

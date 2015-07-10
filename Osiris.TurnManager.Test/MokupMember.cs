@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 
 namespace Osiris.TurnManager.Test
 {
-    public class MokupMember : IStatComposed
+    public class MokupMember : ISceneActor
     {
 
+        public int Id { get; set; }
         public List<Stat> Statistics;
         public List<DerivativeStat> Attributes;
+        public IAIController Controller { get; set; }
+        public event EventHandler Finished;
 
-
-        public MokupMember(float agilityValue) {
+        public MokupMember(int id , float agilityValue) {
+            Id = id;
+            
             Statistics = new List<Stat>();
             Attributes = new List<DerivativeStat>();
 
@@ -32,6 +36,20 @@ namespace Osiris.TurnManager.Test
 
             Attributes.Add(health);
             Attributes.Add(mana);
+            
+        }
+
+        public void PromptFinished(){
+            //do something before event
+            OnPromptFinished(new EventArgs());
+            // or do something here after the event. 
+        }
+
+        private void OnPromptFinished(EventArgs e)
+        {
+            if (Finished != null) {
+                Finished(this, e);
+            }
         }
 
         public Stat GetStatNamed(string name)
@@ -53,5 +71,22 @@ namespace Osiris.TurnManager.Test
 
             return null;
         }
+
+        public int GetId() {
+            return Id;
+        }
+
+
+        public void PromptActions()
+        {
+            
+        }
+
+
+
+
+
+
+        
     }
 }

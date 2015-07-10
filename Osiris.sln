@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Osiris.World", "Osiris.Map\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Osiris.World.Test", "Osiris.Map.Test\Osiris.World.Test.csproj", "{95F8C43A-23A7-4E1D-965E-584FDFCE6E49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Osiris.Actions", "Osiris.Actions\Osiris.Actions.csproj", "{E19CF8FA-3D6A-4076-9915-992F7E9BFB88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Osiris.Actions.Test", "Osiris.Actions.Test\Osiris.Actions.Test.csproj", "{8365CAEC-5786-4AF8-B5D4-9044DFEE7042}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{95F8C43A-23A7-4E1D-965E-584FDFCE6E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95F8C43A-23A7-4E1D-965E-584FDFCE6E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95F8C43A-23A7-4E1D-965E-584FDFCE6E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E19CF8FA-3D6A-4076-9915-992F7E9BFB88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E19CF8FA-3D6A-4076-9915-992F7E9BFB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E19CF8FA-3D6A-4076-9915-992F7E9BFB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E19CF8FA-3D6A-4076-9915-992F7E9BFB88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8365CAEC-5786-4AF8-B5D4-9044DFEE7042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8365CAEC-5786-4AF8-B5D4-9044DFEE7042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8365CAEC-5786-4AF8-B5D4-9044DFEE7042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8365CAEC-5786-4AF8-B5D4-9044DFEE7042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
